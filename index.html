@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 8px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Currency Converter</h1>
+
+  <label for="amountGBP">Amount in GBP:</label>
+  <input type="number" id="amountGBP" placeholder="Enter amount in GBP">
+
+  <label for="amountEuro">Amount in Euro:</label>
+  <input type="number" id="amountEuro" placeholder="Enter amount in Euro">
+
+  <label for="exchangeRateGBPtoEuro">Exchange Rate GBP to Euro:</label>
+  <input type="number" id="exchangeRateGBPtoEuro" placeholder="Enter exchange rate">
+
+  <label for="exchangeRateEurotoGBP">Exchange Rate Euro to GBP:</label>
+  <input type="number" id="exchangeRateEurotoGBP" placeholder="Enter exchange rate">
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculate() {
+      const amountGBP = parseFloat(document.getElementById('amountGBP').value) || 0;
+      const amountEuro = parseFloat(document.getElementById('amountEuro').value) || 0;
+      const exchangeRateGBPtoEuro = parseFloat(document.getElementById('exchangeRateGBPtoEuro').value) || 1;
+      const exchangeRateEurotoGBP = parseFloat(document.getElementById('exchangeRateEurotoGBP').value) || 1;
+
+      const resultGBPtoEuro = amountGBP * exchangeRateGBPtoEuro;
+      const resultEurotoGBP = amountEuro * exchangeRateEurotoGBP;
+
+      const resultElement = document.getElementById('result');
+      resultElement.textContent = `Amount in Euro: ${resultGBPtoEuro.toFixed(2)} Euro | Amount in GBP: ${resultEurotoGBP.toFixed(2)} GBP`;
+    }
+  </script>
+</body>
+</html>
